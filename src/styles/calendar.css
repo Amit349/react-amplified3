@@ -1,0 +1,73 @@
+.wrapper{
+    max-width: 600px;
+    margin: 0 auto;
+    color: #666;
+}
+#header {
+    text-align: center;
+    font-size: 24px;
+    width: 100%;
+    margin: 1rem 0 0;
+}
+
+/*カレンダー*/
+#calendar {
+    text-align: center;
+    width: 100%;
+}
+table {
+    outline: 2px solid rgb(0, 0, 0);
+    border-collapse: collapse;
+    width: 100%;
+}
+th {
+    color: #000000;
+}
+th, td {
+    outline: 1px solid #7d7d7d;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+/*日曜日*/
+td:first-child {
+    color: red;
+}
+/*土曜日*/
+td:last-child {
+    color: blue;
+}
+/*前後月の日付*/
+td.disabled {
+    color: #a2a2a2;
+}
+/*本日*/
+td.today {
+    background-color: #d4475f;
+    color: #fff;
+}
+
+/*ボタン*/
+#next-last-btn {
+    position: relative;
+}
+#next-last-btn button{
+    cursor: pointer;
+    background: #B78D4A;
+    color: #fff;
+    border: 1px solid #B78D4A;
+    border-radius:10px;
+    font-size: 1rem;
+    padding: 0.5rem 2rem;
+    margin: 1rem 0;
+}
+#next-last-btn button:hover{
+    background-color: #D4BB92;
+    border-color: #D4BB92;
+}
+#last {
+    float: left;
+}
+#next {
+    float: right;
+}
