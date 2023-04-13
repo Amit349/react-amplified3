@@ -5,6 +5,8 @@ import App from './App.tsx';
 import reportWebVitals from './pages/reportWebVitals';
 import { Amplify } from 'aws-amplify';
 import awsExports from './pages/aws-exports';
+import './styles/globals.css'
+import './styles/calendar.css'
 Amplify.configure(awsExports);
 
 

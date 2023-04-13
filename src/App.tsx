@@ -71,7 +71,7 @@ console.log(month)
  function showProcess(date: Date) {
     const year = date.getFullYear();
     const month = date.getMonth();
-    //document.querySelector('#header')!.innerHTML = year + "年 " + (month + 1) + "月";
+    document.querySelector('#header')!.innerHTML = year + "年 " + (month + 1) + "月";
                                                  //↑ここの部分だけを<Header>に付けたい
 
     let calendar = createProcess(year, month);
@@ -112,6 +112,7 @@ console.log(B)
       </View>
 
       <div className="wrapper">
+        <h1 id = "header"> </h1>
       
       {/*　↑のタグの代わりに同じ内容の<Header>コンポーネントを呼び出したい↓*/}
      
