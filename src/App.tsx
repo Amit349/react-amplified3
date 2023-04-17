@@ -9,7 +9,11 @@ import '@aws-amplify/ui-react/styles.css';
 
 //import style from '@/styles/Home.module.css'
 import Button from '@material-ui/core/Button' ;
+import { borders } from '@material-ui/system';
+import { Box } from '@material-ui/core';
 //import {Header} from './components/header'
+
+
 
 
 Amplify.configure(awsExports);
@@ -25,11 +29,11 @@ const showDate = new Date(today.getFullYear(), today.getMonth(),1);
   
 
   function createProcess(year: number, month: number) {
-    let calendar = "<table><tr class='dayOfWeek'>";
+    let calendar = "<table>"+<Box className='dayofweek'>
     for (let i = 0; i < week.length; i++) {
-        calendar += "<th>" + week[i] + "</th>";
+        calendar += <Box>{week}[i]</Box>;
     } 
-    calendar += "</tr>";
+    calendar += </Box>
    //このようなjsxで書かれたHTMLタグをmaterial-UIの<Box>コンポーネント(又は複数の種類のコンポーネント)に書き換えたい
 
     let count = 0;
@@ -37,12 +41,6 @@ const showDate = new Date(today.getFullYear(), today.getMonth(),1);
     let endDate = new Date(year, month + 1, 0).getDate();
     let lastMonthEndDate = new Date(year, month, 0).getDate();
     let row = Math.ceil((startDayOfWeek + endDate) / week.length);
-
-console.log(startDayOfWeek);
-console.log(endDate)
-console.log(lastMonthEndDate)
-console.log(year)
-console.log(month)
 
     for (let i = 0; i < row; i++) {
         calendar += "<tr>"
@@ -67,17 +65,21 @@ console.log(month)
     }          //↑のようなタグも全てコンポーネントに書き換えた方が良いのか？
     return calendar;
   }
- 
+
+
  function showProcess(date: Date) {
     const year = date.getFullYear();
     const month = date.getMonth();
-    document.querySelector('#header')!.innerHTML = year + "年 " + (month + 1) + "月";
-                                                 //↑ここの部分だけを<Header>に付けたい
+   // document.querySelector('#header')!.innerHTML = year + "年 " + (month + 1) + "月";
+   //↓のHeaderコンポーネントに変更したいがスコープが異なるため呼び出せない
+    const Header = () =>{
+    <h2>{year}年  {month}月</h2>
+   }
 
     let calendar = createProcess(year, month);
     document.querySelector('#calendar')!.innerHTML = calendar //←この部分を<Calendar>コンポーネントに付けたい
-    //だけどdocumentを使わずにDOMを操作する方法が分からない(ReactDOM.render(document.getElementById)なら可能？？)
-};
+    
+    };
 
  useEffect(() => {
 
@@ -104,19 +106,24 @@ console.log(B)
 }
 }
 
+
   return (
     <>
       <View style={styles.container}>
-        <Heading level={1}>Hello {user.username}</Heading>
+        <Heading level={3}>Hello {user.username}</Heading>
         <Abutton onClick={signOut}>Sign out</Abutton>
       </View>
 
       <div className="wrapper">
         <h1 id = "header"> </h1>
-      
-      {/*　↑のタグの代わりに同じ内容の<Header>コンポーネントを呼び出したい↓*/}
-     
-    
+        {/*ここでHeaderコンポーネントを呼び出したい*/}
+
+        <Box border={1} />
+        <Box borderTop={1} />
+        <Box borderRight={1} />
+        <Box borderBottom={1} />
+        <Box borderLeft={1} />
+
 
 
       <div id="next-last-btn">
@@ -124,8 +131,7 @@ console.log(B)
        <Button variant="contained" id="next" onClick={next}>＞</Button>
       </div>
       <div id="calendar"></div>
-      {/*↑の代わりに<Calendar>コンポーネントを作る*/} 
-
+      
 
     </div>
        
@@ -135,7 +141,7 @@ console.log(B)
 }
 
 const styles = {
-  container: { width: 400, margin: '0 auto', display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 20 },
+  container: { width: 250,  display: 'flex', flexDirection: 'column', justifyContent: 'center', padding: 25 },
   button: { backgroundColor: 'black', color: 'white', outline: 'none', fontSize: 18, padding: '12px 0px' }
 }
 

@@ -5,7 +5,7 @@
 }
 #header {
     text-align: center;
-    font-size: 24px;
+    font-size: 30px;
     width: 100%;
     margin: 1rem 0 0;
 }
@@ -62,8 +62,8 @@ td.today {
     margin: 1rem 0;
 }
 #next-last-btn button:hover{
-    background-color: #D4BB92;
-    border-color: #D4BB92;
+    background-color: #99d9d4;
+    border-color: #21aacc;
 }
 #last {
     float: left;
